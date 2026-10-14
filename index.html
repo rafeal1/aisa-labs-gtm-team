@@ -136,16 +136,12 @@ h1 .or{color:var(--or)}
 .comp .box{flex:1;height:40px;border-radius:12px;background:#F6F4F0;display:flex;align-items:center;padding:0 14px;color:#9a978f;white-space:nowrap;overflow:hidden}
 .comp .box.typing{color:var(--ink)}
 .comp .send{width:34px;height:34px;border-radius:50%;background:#161615;display:flex;align-items:center;justify-content:center}
-/* the clock: caption pill carries the time, the day line under it fills from 9:00 to 18:00 */
-.cap{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 18px 8px 8px;
+/* the clock: the caption pill carries the time */
+.cap{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 18px 8px 8px;
   box-shadow:0 14px 34px -16px rgba(20,18,12,.25);font-size:15px;white-space:nowrap}
 .cap .num{font-family:var(--mono);font-size:13px;color:#fff;background:var(--or);border-radius:999px;padding:3px 10px;font-variant-numeric:tabular-nums}
-.day{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:#a19e97}
-.day i{position:relative;width:260px;height:3px;border-radius:2px;background:#E2DFD8}
-.day i b{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:var(--or);width:0}
-.day i u{position:absolute;top:-3px;width:1px;height:9px;background:#CFCBC3}
 /* a soft paper edge under the caption, so a zoomed app slips under it instead of colliding with the pill */
-.edge{position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(to top,var(--bg) 50%,rgba(250,249,247,0));pointer-events:none}
+.edge{position:absolute;left:0;right:0;bottom:0;height:96px;background:linear-gradient(to top,var(--bg) 50%,rgba(250,249,247,0));pointer-events:none}
 body.phone .edge{display:none}
 /* 18:00 */
 .endcard{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;pointer-events:none;padding:0 24px}
@@ -190,7 +186,7 @@ footer img{height:22px}
 .reveal{transform:translateY(18px);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.seen{opacity:1;transform:none}
 @media (max-width:900px){.team{grid-template-columns:1fr 1fr}.prices{grid-template-columns:1fr}.nav .links a.hide{display:none}}
-@media (max-width:560px){.team{grid-template-columns:1fr}.hero{padding-top:120px}.cap{font-size:13px}.day i{width:180px}.endcard .ms img{width:44px;height:44px}footer{flex-direction:column;align-items:flex-start;gap:12px;padding:28px 20px 44px}.sec{padding:90px 20px}}
+@media (max-width:560px){.team{grid-template-columns:1fr}.hero{padding-top:120px}.cap{font-size:13px}.endcard .ms img{width:44px;height:44px}footer{flex-direction:column;align-items:flex-start;gap:12px;padding:28px 20px 44px}.sec{padding:90px 20px}}
 @media (prefers-reduced-motion:reduce){.reveal{transform:none;transition:none}}
 /* film mode: the story alone, 1920x1080, driven by time (window.renderAt) */
 body.film .nav,body.film .hero,body.film .after,body.film footer,body.film .foot{display:none}
@@ -229,11 +225,9 @@ body.phone .plan span{font-size:11.5px}
 body.phone .comp{height:54px;padding:0 10px;gap:8px}
 body.phone .comp .box{font-size:13.5px}
 body.phone .cap{top:72px;bottom:auto;white-space:normal;width:max-content;max-width:calc(100% - 24px);font-size:13.5px;line-height:1.3;border-radius:18px;padding:7px 14px 7px 7px}
-body.phone .day{bottom:12px}
-body.phone .day i{width:170px}
 body.phone .empty .ms img{width:40px;height:40px}
 </style>
-<noscript><style>.flow{display:none}#f1{display:flex}.story{height:auto}.stage{position:relative}.day,.edge{display:none}.cap{position:relative;left:auto;bottom:auto;transform:none;margin:16px auto;width:max-content}</style></noscript>
+<noscript><style>.flow{display:none}#f1{display:flex}.story{height:auto}.stage{position:relative}.edge{display:none}.cap{position:relative;left:auto;bottom:auto;transform:none;margin:16px auto;width:max-content}</style></noscript>
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -365,7 +359,6 @@ body.phone .empty .ms img{width:40px;height:40px}
   </div>
   <div class="edge"></div>
   <div class="cap" id="cap"><span class="num" id="capn">09:00</span><span id="capt">Day one. Four new teammates start.</span></div>
-  <div class="day" id="day"><span>9:00</span><i id="dayline"><b id="dayfill"></b></i><span>18:00</span></div>
  </div>
 </section>
 <p class="foot">The Grok Bot app is recreated from xAI's official screenshots. The results are real: six AIsa calls on 13 Oct 2026, $0.0673 in total, shown per teammate to the nearest $0.001. The teammates' wording is written for this page.</p>
@@ -458,7 +451,7 @@ function setMode() {
   const st = $("stage"), sw = st.clientWidth, sh = st.clientHeight;
   PHONE = !document.body.classList.contains("film") && sw < 700;
   document.body.classList.toggle("phone", PHONE);
-  APP_W = PHONE ? Math.min(440, sw - 32) : 1160; APP_H = PHONE ? Math.max(440, sh - PH_TOP - 42) : 760;
+  APP_W = PHONE ? Math.min(440, sw - 32) : 1160; APP_H = PHONE ? Math.max(440, sh - PH_TOP - 16) : 760;
   $("camera").style.width = APP_W + "px"; $("camera").style.height = APP_H + "px";
 }
 function measure() {
@@ -534,8 +527,8 @@ function applyState(p) {
     const bt = BOTS[cur], u = local(bt, p), typed = Math.floor(cl((u - S.typeA) / (S.typeB - S.typeA)) * bt.job.length), sent = u >= S.send;
     $("box").textContent = sent || typed === 0 ? "Message " + bt.name : bt.job.slice(0, typed); $("box").classList.toggle("typing", !sent && typed > 0);
   } else { $("box").textContent = "Message the team"; $("box").classList.remove("typing"); }
-  // the clock: caption pill + day line
-  const m = clockAt(p); $("capn").textContent = hhmm(m); $("dayfill").style.width = (cl((m - 540) / 540) * 100) + "%";
+  // the clock: the caption pill
+  const m = clockAt(p); $("capn").textContent = hhmm(m);
   let c = 0; for (let i = 0; i < CAPS.length; i++) if (p >= CAPS[i][0]) c = i;
   if (c !== lastCap) { $("capt").textContent = CAPS[c][1]; lastCap = c; }
   // 18:00: pull back to the whole day, the app steps away, the bill lands on paper
@@ -548,7 +541,7 @@ function place(p) {
   const st = $("stage"), sw = st.clientWidth, sh = st.clientHeight;
   if (PHONE) { $("camera").style.transform = `translate(${(sw - APP_W) / 2}px, ${PH_TOP}px)`; return; }
   // the frame between the nav (top) and the caption (bottom); the film has no nav
-  const film = document.body.classList.contains("film"), top = film ? 20 : 72, avail = sh - top - (film ? 90 : 100);
+  const film = document.body.classList.contains("film"), top = film ? 20 : 72, avail = sh - top - (film ? 70 : 80);
   const fit = Math.min(sw / (APP_W + 80), avail / (APP_H + 20)), c = cameraAt(p), Sc = fit * c.z;
   let tx = sw / 2 - c.x * Sc, ty = top + avail / 2 - c.y * Sc;
   // keep the zoomed app inside the frame instead of showing empty paper past its edges, and its top below the nav
