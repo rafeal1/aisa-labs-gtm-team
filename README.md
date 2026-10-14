@@ -73,7 +73,7 @@ Notes:
 
 ## Credits
 
-- Mascots: aisa.one/labs.
+- Mascots: aisa.one/labs. The team cards and the end card animate them with `assets/bots.js`, a bundle of the same Bloub engine aisa.one/labs uses (github.com/jeremy-prt/bloub, MIT, license in `assets/bots.LICENSE.txt`; source in `js-src/`; rebuild with `npx esbuild js-src/bots.ts --bundle --format=iife --minify --outfile=assets/bots.js`).
 - Grok Bot mark: xAI.
 - X, Reddit and YouTube icons: Simple Icons (CC0).
 - Fonts: Plus Jakarta Sans, Inter and Geist Mono (SIL Open Font License).

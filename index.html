@@ -146,7 +146,7 @@ body.phone .edge{display:none}
 /* 18:00 */
 .endcard{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;pointer-events:none;padding:0 24px}
 .endcard .ms{display:flex;gap:14px;margin-bottom:26px}
-.endcard .ms img{width:56px;height:56px}
+.endcard .ms [data-bot]{width:56px;height:56px}
 .endcard .k{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a19e97}
 .endcard h2{margin-top:10px;font-size:clamp(40px,6vw,82px)}
 .endcard p{margin-top:14px;color:var(--muted);font-size:17px}
@@ -159,7 +159,7 @@ h2 .or{color:var(--or)}
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px}
 .tc{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
 .tc:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(20,18,12,.3)}
-.tc img.m{width:74px;height:74px;margin-bottom:18px}
+.tc .m{width:74px;height:74px;margin-bottom:18px}
 .tc .role{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#a19e97;text-transform:uppercase}
 .tc h3{font-family:var(--display);font-weight:650;font-size:22px;letter-spacing:-.03em;margin:4px 0 8px}
 .tc p{font-size:14.5px;color:#5d5b57}
@@ -186,7 +186,7 @@ footer img{height:22px}
 .reveal{transform:translateY(18px);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.seen{opacity:1;transform:none}
 @media (max-width:900px){.team{grid-template-columns:1fr 1fr}.prices{grid-template-columns:1fr}.nav .links a.hide{display:none}}
-@media (max-width:560px){.team{grid-template-columns:1fr}.hero{padding-top:120px}.cap{font-size:13px}.endcard .ms img{width:44px;height:44px}footer{flex-direction:column;align-items:flex-start;gap:12px;padding:28px 20px 44px}.sec{padding:90px 20px}}
+@media (max-width:560px){.team{grid-template-columns:1fr}.hero{padding-top:120px}.cap{font-size:13px}.endcard .ms [data-bot]{width:44px;height:44px}footer{flex-direction:column;align-items:flex-start;gap:12px;padding:28px 20px 44px}.sec{padding:90px 20px}}
 @media (prefers-reduced-motion:reduce){.reveal{transform:none;transition:none}}
 /* film mode: the story alone, 1920x1080, driven by time (window.renderAt) */
 body.film .nav,body.film .hero,body.film .after,body.film footer,body.film .foot{display:none}
@@ -351,8 +351,8 @@ body.phone .empty .ms img{width:40px;height:40px}
     </div>
    </div>
   </div>
-  <div class="endcard" id="endcard">
-   <div class="ms"><img src="assets/mascot_7.svg" alt=""><img src="assets/mascot_5.svg" alt=""><img src="assets/mascot_6.svg" alt=""><img src="assets/mascot_4.svg" alt=""></div>
+  <div class="endcard" id="endcard" data-bot-gate>
+   <div class="ms"><div data-bot="seo" data-paper="#FAF9F7"></div><div data-bot="research" data-paper="#FAF9F7"></div><div data-bot="finder" data-paper="#FAF9F7"></div><div data-bot="marketing" data-paper="#FAF9F7"></div></div>
    <div class="k">Their first day · 9:00 to 18:00</div>
    <h2>Day one cost <span class="or">$0.068</span>.</h2>
    <p>4 teammates · 6 AIsa calls · every result above is real</p>
@@ -368,16 +368,16 @@ body.phone .empty .ms img{width:40px;height:40px}
  <h2 class="reveal">Meet the <span class="or">GTM Team.</span></h2>
  <p class="lead reveal">Each teammate is a ready-made Grok Bot. Add one or all four. Research is the team's main AIsa user and hands the others sourced facts.</p>
  <div class="team">
-  <div class="tc reveal"><img class="m" src="assets/mascot_7.svg" alt=""><span class="role">SEO</span><h3>SEO Specialist</h3><p>Keywords, search intent and ranking checks. Turns measured search data into a focused set of pages.</p>
+  <div class="tc reveal"><div class="m" data-bot="seo"></div><span class="role">SEO</span><h3>SEO Specialist</h3><p>Keywords, search intent and ranking checks. Turns measured search data into a focused set of pages.</p>
    <div class="get"><span>You get</span>A keyword and ranking brief with dated observations and page priorities.</div>
    <div class="acts"><a class="btn dark" target="_blank" rel="noopener" href="https://x.ai/bot/8q3jk9wfjtGBL1fxVscgP">Add to Grok Bot</a><a class="btn ghost" href="https://aisa.one/labs/templates/seo">Details</a></div></div>
-  <div class="tc reveal"><img class="m" src="assets/mascot_5.svg" alt=""><span class="role">Research</span><h3>Market Researcher</h3><p>Information, evidence and data costs. Checks tool prices and asks before paid calls.</p>
+  <div class="tc reveal"><div class="m" data-bot="research"></div><span class="role">Research</span><h3>Market Researcher</h3><p>Information, evidence and data costs. Checks tool prices and asks before paid calls.</p>
    <div class="get"><span>You get</span>A sourced brief with findings, open questions and a clear cost record.</div>
    <div class="acts"><a class="btn dark" target="_blank" rel="noopener" href="https://x.ai/bot/EAr05J57MZdbk-Ktopt8L">Add to Grok Bot</a><a class="btn ghost" href="https://aisa.one/labs/templates/research">Details</a></div></div>
-  <div class="tc reveal"><img class="m" src="assets/mascot_6.svg" alt=""><span class="role">Finder</span><h3>Lead Gen Specialist</h3><p>Company and contact discovery. Builds and enriches target lists from connected sources.</p>
+  <div class="tc reveal"><div class="m" data-bot="finder"></div><span class="role">Finder</span><h3>Lead Gen Specialist</h3><p>Company and contact discovery. Builds and enriches target lists from connected sources.</p>
    <div class="get"><span>You get</span>A deduplicated list with fit reasons, sources and clearly marked gaps.</div>
    <div class="acts"><a class="btn dark" target="_blank" rel="noopener" href="https://x.ai/bot/yuXdq6-vbeAOmHgDyzczk">Add to Grok Bot</a><a class="btn ghost" href="https://aisa.one/labs/templates/finder">Details</a></div></div>
-  <div class="tc reveal"><img class="m" src="assets/mascot_4.svg" alt=""><span class="role">Marketing</span><h3>Content Marketer</h3><p>Content, campaigns and public messaging. Turns a clear brief and verified facts into work ready for review.</p>
+  <div class="tc reveal"><div class="m" data-bot="marketing"></div><span class="role">Marketing</span><h3>Content Marketer</h3><p>Content, campaigns and public messaging. Turns a clear brief and verified facts into work ready for review.</p>
    <div class="get"><span>You get</span>A draft and a campaign plan with audience, message, channel and next action.</div>
    <div class="acts"><a class="btn dark" target="_blank" rel="noopener" href="https://x.ai/bot/I3iAWQr05w8cHpuMvyfob">Add to Grok Bot</a><a class="btn ghost" href="https://aisa.one/labs/templates/marketing">Details</a></div></div>
  </div>
@@ -410,6 +410,7 @@ body.phone .empty .ms img{width:40px;height:40px}
 </div>
 <footer><img src="assets/logo-color-h-tight.png" alt="AIsa"><span>GTM Team · AIsa Labs. Tool usage may be billed separately.</span></footer>
 
+<script src="assets/bots.js"></script>
 <script>
 (() => {
 const cl = (x, a = 0, b = 1) => x < a ? a : x > b ? b : x, lerp = (a, b, u) => a + (b - a) * u;
@@ -560,7 +561,7 @@ function frame() {
 }
 // the film: time drives p (same state machine, no scroll); open with ?film=1, then call renderAt(t)
 const FILM_DUR = 60;
-window.renderAt = t => paint(cl(t / FILM_DUR));
+window.renderAt = t => { paint(cl(t / FILM_DUR)); if (window.AisaBots) AisaBots.seek(t); };
 // ?p=0.42 freezes the page at one moment (for stills and checks)
 const fp = /[?&]p=([\d.]+)/.exec(location.search);
 function relayout() { setMode(); measure(); buildCam(); }
@@ -568,7 +569,7 @@ let rz = 0; addEventListener("resize", () => { cancelAnimationFrame(rz); rz = re
 function start() {
   relayout();
   if (/film=1/.test(location.search)) { document.body.classList.add("film"); relayout(); renderAt(0); }
-  else if (fp) { document.body.classList.add("film"); relayout(); paint(+fp[1]); document.body.dataset.ready = 1; }
+  else if (fp) { document.body.classList.add("film"); relayout(); paint(+fp[1]); if (window.AisaBots) AisaBots.seek(0); document.body.dataset.ready = 1; }
   else requestAnimationFrame(frame);
 }
 (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(start);
